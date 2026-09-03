@@ -45,11 +45,17 @@ For Hardware:
 
 ### Implementation
 For Software:
-# Installation
-[commands]
-
 # Run
-[commands]
+python app.py
+http://127.0.0.1:5000
+
+# Installation
+No special installation is required.
+
+1. Download or clone the repository.
+2. Open the project folder.
+3. Open `questions.html` in a web browser.
+4.
 
 ### Project Documentation
 For Software:
@@ -106,9 +112,9 @@ For Hardware:
 ## Team Contributions
 - [both]: [backend]
 - [vygha]: [Api connection and git]
-- [Name 3]: [frontend]
+- [Amisha]: [frontend]
 
----
+--
 Made with ❤️ at TinkerHub Useless Projects 
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
