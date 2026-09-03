@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DELUL</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo small">
+        DELUL
+    </div>
+
+    {% if personality_only %}
+
+        <!-- PERSONALITY RESULT -->
+
+        <h1>
+            🧬 YOUR DELUL TYPE
+        </h1>
+
+        <div class="result-card">
+
+            <h2>
+                {{ personality }}
+            </h2>
+
+            <p>
+                {{ description }}
+            </p>
+
+        </div>
+
+        <h2>
+            Now give DELUL something to overthink 💀
+        </h2>
+
+        <form
+            action="/analyze"
+            method="POST"
+        >
+
+            <div class="input-section">
+
+                <textarea
+                    name="decision"
+                    placeholder="Example: My crush replied 'okay'..."
+                    required
+                ></textarea>
+
+                <h3>
+                    Choose your chaos level 💀
+                </h3>
+
+                <div class="mode-buttons">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="mode"
+                            value="normal"
+                            checked
+                        >
+                        😌 Mild
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="mode"
+                            value="delulu"
+                        >
+                        🕵️ DELUL
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="mode"
+                            value="maximum"
+                        >
+                        💀 MAXIMUM
+                    </label>
+
+                </div>
+
+            </div>
+
+            <button type="submit">
+                MAKE IT WORSE 💀
+            </button>
+
+        </form>
+
+
+    {% else %}
+
+        <!-- AI RESULT -->
+
+        <div class="personality-badge">
+            {{ personality }}
+        </div>
+
+        <h1>
+            {{ result.title }}
+        </h1>
+
+        <div class="decision">
+            "{{ decision }}"
+        </div>
+
+
+        <!-- DELUL SCORE -->
+
+        <h2>
+            🔥 DELUL SCORE
+        </h2>
+
+        <div class="big-score">
+            {{ result.delul_score }}
+            <span>/100</span>
+        </div>
+
+
+        <!-- LEVEL -->
+
+        <div class="level">
+
+            OVERTHINKING LEVEL:
+
+            {{ level }}/5
+
+        </div>
+
+
+        <!-- ANALYSIS -->
+
+        <div class="result-card">
+
+            <h2>
+                🧠 ANALYSIS
+            </h2>
+
+            <p>
+                {{ result.analysis }}
+            </p>
+
+        </div>
+
+
+        <!-- THOUGHT SPIRAL -->
+
+        <div class="spiral">
+
+            <h2>
+                🌀 THOUGHT SPIRAL
+            </h2>
+
+            {% for thought in result.spiral %}
+
+                <div class="thought">
+                    {{ thought }}
+                </div>
+
+                {% if not loop.last %}
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- FINAL VERDICT -->
+
+        <div class="verdict">
+
+            <h2>
+                {{ result.verdict }}
+            </h2>
+
+        </div>
+
+
+        <!-- MAKE IT WORSE -->
+
+        {% if level < 5 %}
+
+            <form
+                action="/worse"
+                method="POST"
+            >
+
+                <button class="worse-button">
+                    MAKE IT WORSE 💀
+                </button>
+
+            </form>
+
+        {% else %}
+
+            <div class="maximum">
+
+                🚨 MAXIMUM DELUL REACHED 🚨
+
+                <p>
+                    There is literally nothing left to overthink.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <br>
+
+        <a href="/questions">
+
+            <button>
+                🔄 START OVER
+            </button>
+
+        </a>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

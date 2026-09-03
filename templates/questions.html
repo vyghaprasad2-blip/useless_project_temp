@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>DELUL DNA</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo small">
+        DELUL
+    </div>
+
+    <h1>🧬 DELUL DNA</h1>
+
+    <p>
+        Answer honestly. Your brain is being judged.
+    </p>
+
+    <form
+        action="/personality"
+        method="POST"
+    >
+
+        {% for q in questions %}
+
+        {% set qindex = loop.index0 %}
+
+        <div class="question">
+
+            <h3>
+                {{ loop.index }}. {{ q.question }}
+            </h3>
+
+            {% for option in q.options %}
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q{{ qindex }}"
+                    value="{{ option[1] }}"
+                    required
+                >
+
+                {{ option[0] }}
+
+            </label>
+
+            {% endfor %}
+
+        </div>
+
+        {% endfor %}
+
+        <button type="submit">
+
+            REVEAL MY DELUL TYPE 🧬
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
