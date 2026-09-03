@@ -1,1 +1,39 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Useless Project</title>
+</head>
+<body>
+
+    <h1>Welcome to Useless Project 🤖</h1>
+
+    <input type="text" id="message" placeholder="Type your message">
+
+    <button onclick="sendMessage()">Send</button>
+
+    <p id="response"></p>
+
+    <script>
+        async function sendMessage() {
+            const message = document.getElementById("message").value;
+
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: message
+                })
+            });
+
+            const data = await response.json();
+
+            document.getElementById("response").innerText =
+                data.response || data.error;
+        }
+    </script>
+
+</body>
+</html>
