@@ -46,8 +46,7 @@ For Hardware:
 ### Implementation
 For Software:
 # Run
-python app.py
-http://127.0.0.1:5000
+https://useless-project-temp-4.onrender.com
 
 # Installation
 No special installation is required.
