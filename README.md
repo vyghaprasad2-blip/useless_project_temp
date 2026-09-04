@@ -110,8 +110,8 @@ For Hardware:
 
 ## Team Contributions
 - Amisha: backend
-- Vygha: Api connection and git
--Amisha: frontend
+- Both: Api connection and git
+- Vygha : frontend
 
 --
 Made with ❤️ at TinkerHub Useless Projects 
